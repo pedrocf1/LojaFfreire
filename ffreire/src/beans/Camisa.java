@@ -8,6 +8,7 @@ public class Camisa {
 	private TipoCamisa tipo;
 	private	String descricao;
 	
+	
 	public Camisa(TamanhoCamisa tamanho, double preco, String corEstampa, TipoCamisa tipo, String descricao){
 		
 		this.tamanho = tamanho;

@@ -1,6 +1,6 @@
 package beans;
 
-public class Bermudas {
+public class Bermudas{
 	
 private	int tamanho;
 private	double preco;
