@@ -1,5 +1,6 @@
 package controles;
 
+import beans.Oculos;
 import repositorio.IRepositorioOculos;
 import repositorio.RepositorioOculos;
 
@@ -21,10 +22,10 @@ private IRepositorioOculos repositorio;
 	}
 
 	@Override
-	public void buscar(Object objeto) {
-		
-		this.repositorio.buscar(objeto);
-		
+	public Oculos buscar(Object objeto) {
+		Oculos aux = null;
+		aux = this.repositorio.buscar(objeto);
+		return aux;
 	}
 
 	@Override

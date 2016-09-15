@@ -1,6 +1,7 @@
 
 package controles;
 
+import beans.Bermudas;
 import repositorio.IRepositorioBermudas;
 import repositorio.RepositorioBermudas;
 
@@ -23,10 +24,10 @@ public class CadastroBermudas implements ICadastroBermudas {
 	}
 
 	@Override
-	public void buscar(Object objeto) {
-		
-		this.repositorio.buscar(objeto);
-		
+	public Bermudas buscar(Object objeto) {
+		Bermudas aux = null;
+		aux = this.repositorio.buscar(objeto);
+		return aux;
 	}
 
 	@Override

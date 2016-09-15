@@ -1,5 +1,6 @@
 package controles;
 
+import beans.Calca;
 import repositorio.IRepositorioCalca;
 import repositorio.RepositorioCalca;
 
@@ -23,10 +24,10 @@ public class CadastroCalca implements ICadastroCalca {
 	}
 
 	@Override
-	public void buscar(Object objeto) {
-		
-		this.repositorio.buscar(objeto);
-		
+	public Calca buscar(Object objeto) {
+		Calca aux = null;
+		aux =this.repositorio.buscar(objeto);
+		return aux;
 	}
 
 	@Override

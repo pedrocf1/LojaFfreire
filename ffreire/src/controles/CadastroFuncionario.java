@@ -1,5 +1,6 @@
 package controles;
 
+import beans.Funcionario;
 import repositorio.IRepositorioFuncionario;
 import repositorio.RepositorioFuncionario;
 
@@ -14,17 +15,17 @@ private IRepositorioFuncionario repositorio;
 	}
 	
 	@Override
-	public void cadastrar(Object objeto) {
+	public void cadastrar(Funcionario func) {
 		
-		this.repositorio.cadastrar(objeto);
+		this.repositorio.cadastrar(func);
 		
 	}
 
 	@Override
-	public void buscar(Object objeto) {
-		
-		this.repositorio.buscar(objeto);
-		
+	public Funcionario buscar(Object objeto) {
+		Funcionario aux = null;
+		aux = this.repositorio.buscar(objeto);
+		return aux;
 	}
 
 	@Override
@@ -39,5 +40,26 @@ private IRepositorioFuncionario repositorio;
 		this.repositorio.atualizar(objeto);
 		
 	}
+
+	@Override
+	public Funcionario login(String login, String senha) {
+		Funcionario aux = null;
+		aux = this.repositorio.login(login, senha);
+		
+		return aux;
+	}
+
+	@Override
+	public Funcionario listar() {
+		
+		return this.repositorio.listar();
+	}
+
+	@Override
+	public boolean verificaLogin(String login) {
+		boolean confirma;
+		confirma = this.repositorio.verificaLogin(login);
+		return confirma;
+		}
 	
 }

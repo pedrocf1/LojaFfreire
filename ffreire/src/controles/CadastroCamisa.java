@@ -1,5 +1,6 @@
 package controles;
 
+import beans.Camisa;
 import repositorio.IRepositorioCamisa;
 import repositorio.RepositorioCamisa;
 
@@ -21,10 +22,10 @@ public class CadastroCamisa implements ICadastroCamisa {
 	}
 
 	@Override
-	public void buscar(Object objeto) {
-		
-		this.repositorio.buscar(objeto);
-		
+	public Camisa buscar(Object objeto) {
+		Camisa aux = null;
+		aux = this.repositorio.buscar(objeto);
+		return aux;
 	}
 
 	@Override
