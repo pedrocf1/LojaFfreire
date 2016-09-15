@@ -7,8 +7,7 @@ import beans.Funcionario;
 public class RepositorioFuncionario implements IRepositorioFuncionario{
 
 	private ArrayList<Funcionario> funcionario;
-
-	
+		
 	public RepositorioFuncionario(){
 		
 		
@@ -17,26 +16,26 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 	}
 	
 	@Override
-	public void cadastrar(Object objeto) {
+	public void cadastrar(Funcionario func) {
 
-		if(objeto instanceof Funcionario){
+		
 			
-			this.funcionario.add((Funcionario) objeto);
-		}
+			this.funcionario.add(func);
+		
 
 		
 	}// FIM CLASSE CADASTRAR
 
 	@Override
-	public void buscar(Object objeto) {
-		
-
+	public Funcionario buscar(Object objeto) {
+			
+		Funcionario aux = null;
 		
 		if(objeto instanceof Funcionario){
 			
 			for(int cont = 0;cont<= this.funcionario.size();cont++){
 				
-				Funcionario aux = this.funcionario.get(cont);
+				aux = this.funcionario.get(cont);
 				
 				  if(aux.equals(objeto)){
 					
@@ -48,7 +47,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 			
 		}
 		
-		
+		return aux;
 	}// FIM CLASSE BUSCAR
 
 	@Override
@@ -98,6 +97,50 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 	
 		
 	}// FIM CLASSE ATUALIZAR
+
+	@Override
+	public Funcionario login(String login, String senha) {
+		
+		Funcionario aux= null;
+		
+		for (int cont = 0;cont<=this.funcionario.size();cont++){
+				
+			if(aux.getLogin().equals(login) && aux.getSenha().equals(senha)){
+				
+			
+			aux = this.funcionario.get(cont);
+				}
+			  }
+		
+		return aux;
+	}
+
+	@Override
+	public Funcionario listar() {
+		int cont = 0;
+		Funcionario aux = null;
+		while(cont <= this.funcionario.size()){}
+			aux = this.funcionario.get(cont);
+		
+		return aux;
+	}
+
+	@Override
+	public boolean verificaLogin(String login) {
+		boolean confirma = false;
+		
+		for(int cont = 0;cont <= this.funcionario.size();cont++){
+		
+			if(this.funcionario.get(cont).getLogin().equals(login)){
+				return confirma;
+			}
+		}
+		
+		
+		return confirma;
+	}
+	
+	
 	
 	
 }

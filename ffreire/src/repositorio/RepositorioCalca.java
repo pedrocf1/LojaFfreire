@@ -29,15 +29,15 @@ public class RepositorioCalca implements IRepositorioCalca {
 	}// FIM CLASSE CADASTRAR
 
 	@Override
-	public void buscar(Object objeto) {
+	public Calca buscar(Object objeto) {
 		
-
+		Calca aux= null;
 		
 		if(objeto instanceof Calca){
 			
 			for(int cont = 0;cont<= this.calca.size();cont++){
 				
-				Calca aux = this.calca.get(cont);
+				aux = this.calca.get(cont);
 				
 				  if(aux.equals(objeto)){
 					
@@ -49,7 +49,7 @@ public class RepositorioCalca implements IRepositorioCalca {
 			
 		}
 		
-		
+		return aux;
 	}// FIM CLASSE BUSCAR
 
 	@Override

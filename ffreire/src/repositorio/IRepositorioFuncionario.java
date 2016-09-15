@@ -1,10 +1,15 @@
 package repositorio;
 
+import beans.Funcionario;
+
 public interface IRepositorioFuncionario {
 	
-	void cadastrar(Object objeto);
+	void cadastrar(Funcionario func);
 	void remover(Object objeto);
-	void buscar(Object objeto);
+	Funcionario buscar(Object objeto);
 	void atualizar(Object objeto);
+	boolean verificaLogin(String login);
+	Funcionario login(String login, String senha);
+	Funcionario listar();
 
 }

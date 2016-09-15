@@ -31,15 +31,16 @@ public class RepositorioBermudas implements IRepositorioBermudas {
 	}// FIM CLASSE CADASTRAR
 
 	@Override
-	public void buscar(Object objeto) {
+	public Bermudas buscar(Object objeto) {
 		
-
+		Bermudas aux = null;
 		
 		if(objeto instanceof Bermudas){
 			
+						
 			for(int cont = 0;cont<= this.bermuda.size();cont++){
 				
-				Bermudas aux = this.bermuda.get(cont);
+				aux = this.bermuda.get(cont);
 				
 				  if(aux.equals(objeto)){
 					
@@ -51,7 +52,7 @@ public class RepositorioBermudas implements IRepositorioBermudas {
 			
 		} 
 		
-		
+		return aux;
 	}// FIM CLASSE BUSCAR
 
 	@Override

@@ -28,15 +28,15 @@ public class RepositorioOculos implements IRepositorioOculos {
 	}// FIM CLASSE CADASTRAR
 
 	@Override
-	public void buscar(Object objeto) {
+	public Oculos buscar(Object objeto) {
 		
-
+		Oculos aux = null;
 		
 		if(objeto instanceof Oculos){
 			
 			for(int cont = 0;cont<= this.oculos.size();cont++){
 				
-				Oculos aux = this.oculos.get(cont);
+				aux = this.oculos.get(cont);
 				
 				  if(aux.equals(objeto)){
 					
@@ -48,7 +48,7 @@ public class RepositorioOculos implements IRepositorioOculos {
 			
 		}
 		
-		
+		return aux;
 	}// FIM CLASSE BUSCAR
 
 	@Override

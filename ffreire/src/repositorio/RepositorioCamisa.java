@@ -28,15 +28,15 @@ public class RepositorioCamisa implements IRepositorioCamisa {
 	}// FIM CLASSE CADASTRAR
 
 	@Override
-	public void buscar(Object objeto) {
+	public Camisa buscar(Object objeto) {
 		
-
+		Camisa aux = null;
 		
 		if(objeto instanceof Camisa){
 			
 			for(int cont = 0;cont<= this.camisa.size();cont++){
 				
-				Camisa aux = this.camisa.get(cont);
+				 aux = this.camisa.get(cont);
 				
 				  if(aux.equals(objeto)){
 					
@@ -48,8 +48,9 @@ public class RepositorioCamisa implements IRepositorioCamisa {
 			
 		}
 		
-		
+		return aux;
 	}// FIM CLASSE BUSCAR
+	
 
 	@Override
 	public void remover(Object objeto) {
@@ -100,3 +101,4 @@ public class RepositorioCamisa implements IRepositorioCamisa {
 	}// FIM CLASSE ATUALIZAR
 
 }
+ 
