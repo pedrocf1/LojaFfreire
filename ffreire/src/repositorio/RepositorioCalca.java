@@ -2,7 +2,7 @@ package repositorio;
 
 import java.util.ArrayList;
 
-
+import beans.Bermudas;
 import beans.Calca;
 
 public class RepositorioCalca implements IRepositorioCalca {
@@ -99,6 +99,27 @@ public class RepositorioCalca implements IRepositorioCalca {
 	
 		
 	}// FIM CLASSE ATUALIZAR
+
+	@Override
+	public Calca listar() {
+		Calca calca = null;
+		for(int cont = 0;cont > this.calca.size();cont++){
+			calca = this.calca.get(cont);
+			return calca;
+		}
+		return calca;
+	}
+
+	@Override
+	public Calca buscarCod(int cod) {
+		Calca calca = null;
+		for(int cont = 0 ;cont <=this.calca.size();cont++){
+			calca = this.calca.get(cont);
+			if(calca.getCodigo() == cod)
+				cont = this.calca.size() + 1;
+		}
+		return calca;
+	}
 
 	
 	

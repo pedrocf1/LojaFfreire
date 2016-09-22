@@ -41,4 +41,20 @@ private IRepositorioOculos repositorio;
 		
 	}
 
+	@Override
+	public Oculos listar(Oculos oculos) {
+		
+		oculos = this.repositorio.listar();
+		return oculos;
+	}
+
+	@Override
+	public Oculos buscarCod(int cod) {
+		Oculos oculos;
+		oculos = this.repositorio.buscarCod(cod);
+		return oculos;
+	}
+
+
+
 }

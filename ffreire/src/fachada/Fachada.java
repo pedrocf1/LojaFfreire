@@ -1,6 +1,10 @@
 package fachada;
 
+import beans.Bermudas;
+import beans.Calca;
+import beans.Camisa;
 import beans.Funcionario;
+import beans.Oculos;
 import controles.*;
 
 
@@ -59,8 +63,8 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void cadastrarBermuda(Object objeto) {
-		this.cadastroBermudas.cadastrar(objeto);
+	public void cadastrarBermuda(Bermudas berm) {
+		this.cadastroBermudas.cadastrar(berm);
 		
 	}
 
@@ -167,9 +171,12 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void buscaBermuda(Object objeto) {
-		this.cadastroBermudas.buscar(objeto);
+	public Bermudas buscaBermuda(Object objeto) {
+		Bermudas aux;
 		
+		aux = this.cadastroBermudas.buscar(objeto);
+		
+		return aux;
 	}
 
 	
@@ -201,6 +208,50 @@ public class Fachada implements IFachada{
 		boolean confirma;
 		confirma = this.cadastroFuncionario.verificaLogin(login);
 		return confirma;
+	}
+	@Override
+	public Bermudas listar(Bermudas berm) {
+		berm = this.cadastroBermudas.listar(berm);
+		return berm;
+	}
+	@Override
+	public Camisa listar(Camisa camisa) {
+		camisa = this.cadastroCamisa.listar(camisa);
+		return camisa;
+	}
+	@Override
+	public Calca listar(Calca calca) {
+		calca = this.cadastroCalca.listar(calca);
+		return calca;
+	}
+	@Override
+	public Oculos listar(Oculos oculos) {
+		oculos = this.cadastroOculos.listar(oculos);
+		return oculos;
+	}
+	@Override
+	public Bermudas buscaCodBerm(int cod) {
+		Bermudas berm;
+		berm = this.cadastroBermudas.buscarCod(cod);
+		return berm;
+	}
+	@Override
+	public Camisa buscaCodCam(int cod) {
+		Camisa camisa;
+		camisa = this.cadastroCamisa.buscarCod(cod);
+		return camisa;
+	}
+	@Override
+	public Calca buscaCodCal(int cod) {
+		Calca calca;
+		calca = this.cadastroCalca.buscarCod(cod);
+		return calca;
+	}
+	@Override
+	public Oculos buscaCodOculos(int cod) {
+		Oculos oculos;
+		oculos = this.cadastroOculos.buscarCod(cod);
+		return oculos;
 	}
 
 }

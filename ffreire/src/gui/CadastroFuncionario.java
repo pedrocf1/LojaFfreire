@@ -31,7 +31,7 @@ public class CadastroFuncionario extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -43,7 +43,7 @@ public class CadastroFuncionario extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
@@ -115,13 +115,16 @@ public class CadastroFuncionario extends JFrame {
 				
 				if(confirma == false){
 				 fachada.cadastrarFuncionario(func);
-					JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
+				   JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
+				   dispose();
+				   LoginAdm adm = new LoginAdm(fachada);
+				   adm.setVisible(true);
 				}
 				}
 			
 			}
 		});
-		btnCadastrar.setBounds(189, 532, 108, 27);
+		btnCadastrar.setBounds(40, 530, 108, 27);
 		panel.add(btnCadastrar);
 		
 		JLabel lblLogin = new JLabel("Login");
@@ -143,6 +146,15 @@ public class CadastroFuncionario extends JFrame {
 		tfSenha.setBounds(142, 435, 209, 20);
 		panel.add(tfSenha);
 		tfSenha.setColumns(10);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				LoginAdm adm = new LoginAdm(fachada);				
+				adm.setVisible(true);			}
+		});
+		btnVoltar.setBounds(243, 532, 108, 27);
+		panel.add(btnVoltar);
 	}
-
 }

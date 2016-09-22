@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import beans.Funcionario;
 import fachada.IFachada;
 
 import java.awt.GridLayout;
@@ -20,6 +21,7 @@ public class LoginAdm extends JFrame {
 
 	private JPanel contentPane;
 	private IFachada fachada;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -58,6 +60,14 @@ public class LoginAdm extends JFrame {
 		panel.add(lblSelecioneOqueDeseja);
 		
 		JButton btnCadastrarProdutos = new JButton("Cadastrar produtos");
+		btnCadastrarProdutos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				Funcionario func = null;
+				AdcProduto produto = new AdcProduto(fachada,1,func);
+				produto.setVisible(true);
+			}
+		});
 		btnCadastrarProdutos.setBounds(182, 164, 141, 33);
 		panel.add(btnCadastrarProdutos);
 		
@@ -66,7 +76,7 @@ public class LoginAdm extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 				CadastroFuncionario cadastro = new CadastroFuncionario(fachada);
-				
+				cadastro.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(182, 235, 141, 33);

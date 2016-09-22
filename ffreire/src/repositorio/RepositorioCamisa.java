@@ -2,6 +2,7 @@ package repositorio;
 
 import java.util.ArrayList;
 
+import beans.Bermudas;
 import beans.Camisa;
 
 public class RepositorioCamisa implements IRepositorioCamisa {
@@ -99,6 +100,27 @@ public class RepositorioCamisa implements IRepositorioCamisa {
 	
 		
 	}// FIM CLASSE ATUALIZAR
+
+	@Override
+	public Camisa listar() {
+		Camisa camisa = null;
+		for(int cont = 0;cont > this.camisa.size();cont++){
+			camisa = this.camisa.get(cont);
+			return camisa;
+		}
+		return camisa;
+	}
+
+	@Override
+	public Camisa bucarCod(int cod) {
+		Camisa camisa = null;
+		for(int cont = 0;cont <=this.camisa.size();cont++){
+			camisa = this.camisa.get(cont);
+			if (camisa.getCodigo() == cod)
+				cont = this.camisa.size() +1;
+		}
+		return camisa;
+	}
 
 }
  

@@ -43,4 +43,17 @@ public class CadastroCalca implements ICadastroCalca {
 		
 	}
 
+	@Override
+	public Calca listar(Calca calca) {
+		calca = this.repositorio.listar();
+		return calca;
+	}
+
+	@Override
+	public Calca buscarCod(int cod) {
+		Calca calca;
+		calca = this.repositorio.buscarCod(cod);
+		return calca;
+	}
+
 }

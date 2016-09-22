@@ -10,7 +10,13 @@ public interface IFachada {
 	void cadastrarCliente(Object objeto);
 	void cadastrarCalca(Object objeto);
 	void cadastrarOculos(Object objeto);
-	void cadastrarBermuda(Object objeto);
+	void cadastrarBermuda(Bermudas berm);
+	
+	Bermudas listar(Bermudas berm);
+	Camisa listar(Camisa camisa);
+	Calca listar(Calca calca);
+	Oculos listar(Oculos oculos);
+	Funcionario listar(Object objeto);
 	
 	void atualizaFuncionario( Object objeto);
 	void atualizaCamisa(Object objeto);
@@ -31,9 +37,14 @@ public interface IFachada {
 	void buscaCliente(Object objeto);
 	void buscaCalca(Object objeto);
 	void buscaOculos(Object objeto);
-	void buscaBermuda(Object objeto);
+	Bermudas buscaBermuda(Object objeto);
 	
-	Funcionario listar(Object objeto);
+	Bermudas buscaCodBerm(int cod);
+	Camisa buscaCodCam (int cod);
+	Calca buscaCodCal(int cod);
+	Oculos buscaCodOculos(int cod);
+	
+	
 	
 	boolean verificaLogin(String login);
 	Funcionario logar(String login, String senha);

@@ -39,7 +39,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 				
 				  if(aux.equals(objeto)){
 					
-					
+					cont = 1 + this.funcionario.size();
 					
 				}
 				

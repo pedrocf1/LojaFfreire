@@ -17,9 +17,9 @@ public class CadastroBermudas implements ICadastroBermudas {
 	}
 	
 	@Override
-	public void cadastrar(Object objeto) {
+	public void cadastrar(Bermudas berm) {
 		
-		this.repositorio.cadastrar(objeto);
+		this.repositorio.cadastrar(berm);
 		
 	}
 
@@ -41,6 +41,19 @@ public class CadastroBermudas implements ICadastroBermudas {
 	public void atualizar(Object objeto) {
 		this.repositorio.atualizar(objeto);
 		
+	}
+
+	@Override
+	public Bermudas listar(Bermudas berm) {
+		berm = this.repositorio.listar();
+		return berm;
+	}
+
+	@Override
+	public Bermudas buscarCod(int cod) {
+		Bermudas berm;
+		berm = this.repositorio.buscarCod(cod);
+		return berm;
 	}
 	
 	

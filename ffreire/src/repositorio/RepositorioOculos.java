@@ -2,6 +2,7 @@ package repositorio;
 
 import java.util.ArrayList;
 
+import beans.Bermudas;
 import beans.Oculos;
 
 public class RepositorioOculos implements IRepositorioOculos {
@@ -98,5 +99,26 @@ public class RepositorioOculos implements IRepositorioOculos {
 	
 		
 	}// FIM CLASSE ATUALIZAR
+
+	@Override
+	public Oculos listar() {
+		Oculos oculos = null;
+		for(int cont = 0;cont > this.oculos.size();cont++){
+			oculos = this.oculos.get(cont);
+			return oculos;
+		}
+		return oculos;
+	}
+
+	@Override
+	public Oculos buscarCod(int cod) {
+		Oculos oculos = null;
+		for(int cont = 0;cont<=this.oculos.size();cont++){
+			oculos = this.oculos.get(cont);
+			if(oculos.getCodigo() == cod)
+			cont = this.oculos.size() + 1;
+		}
+		return null;
+	}
 
 }

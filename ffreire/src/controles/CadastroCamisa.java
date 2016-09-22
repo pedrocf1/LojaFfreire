@@ -40,4 +40,17 @@ public class CadastroCamisa implements ICadastroCamisa {
 		this.repositorio.atualizar(objeto);
 		
 	}
+
+	@Override
+	public Camisa listar(Camisa camisa) {
+		camisa = this.repositorio.listar();
+		return camisa;
+	}
+
+	@Override
+	public Camisa buscarCod(int cod) {
+		Camisa camisa;
+		camisa = this.repositorio.bucarCod(cod);
+		return camisa;
+	}
 }

@@ -111,25 +111,25 @@ public class TelaLogin extends JFrame {
 							
 		JButton btnCadastrar = new JButton("Logar");
 		btnCadastrar.addActionListener(new ActionListener() {
-			// da uma olhada ake dps                                \/
+			                        
 			public void actionPerformed(ActionEvent e) {
 				Funcionario aux = null;
 				try {
 				aux = fachada.logar(tfUsuario.getText(),pfSenha.getText());
 				}catch(NullPointerException e1){
-				if(aux != null){
-					LoginFunc tela = new LoginFunc(fachada);
-					tela.setVisible(true);
-				}else{
-					JOptionPane.showMessageDialog(null, "Login ou senha errados !");
-				}
-				}
-				/*if(tfUsuario.getText().equals("asas")){
+					if(aux != null){
+						LoginFunc tela = new LoginFunc(fachada,aux);
+						tela.setVisible(true);
+						
+				}else if(tfUsuario.getText().equals("ffreire") && pfSenha.getText().equals("luanaluana")){
 					dispose();
-					System.out.println("adsfjokubhadskjuhfgakof");
-					LoginFunc tela = new LoginFunc(fachada);
+					LoginAdm tela = new LoginAdm(fachada);
 					tela.setVisible(true);
-				}*/
+					
+				}else{JOptionPane.showMessageDialog(null, "Login ou senha errados !");}
+					
+				}// FIM CATCH
+				
 			}
 		});
 		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 16));

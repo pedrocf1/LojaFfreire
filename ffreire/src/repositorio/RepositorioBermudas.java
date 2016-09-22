@@ -20,14 +20,10 @@ public class RepositorioBermudas implements IRepositorioBermudas {
 	}
 	
 	@Override
-	public void cadastrar(Object objeto) {
+	public void cadastrar(Bermudas berm) {
 
-		if(objeto instanceof Bermudas){
-			
-			this.bermuda.add((Bermudas) objeto);
-		}
-
-		
+			this.bermuda.add(berm);
+				
 	}// FIM CLASSE CADASTRAR
 
 	@Override
@@ -44,7 +40,7 @@ public class RepositorioBermudas implements IRepositorioBermudas {
 				
 				  if(aux.equals(objeto)){
 					
-					
+					cont = 1 + bermuda.size();
 					
 				}
 				
@@ -102,5 +98,29 @@ public class RepositorioBermudas implements IRepositorioBermudas {
 	
 		
 	}// FIM CLASSE ATUALIZAR
+
+	@Override
+	public Bermudas listar() {
+		
+		Bermudas berm = null;
+		for(int cont = 0;cont <= this.bermuda.size();cont++){
+			berm = this.bermuda.get(cont);
+			return berm;
+		}
+		return berm;
+	}
+
+	@Override
+	public Bermudas buscarCod(int cod) {
+		Bermudas berm = null;
+		
+		for(int cont = 0;cont <=this.bermuda.size();cont++){
+			berm = this.bermuda.get(cont);
+			if(berm.getCodigo() == cod)
+				cont = this.bermuda.size() + 1;
+		}
+		
+		return berm;
+	}
 
 }
