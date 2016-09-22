@@ -7,16 +7,28 @@ public class Camisa {
 	private	String corEstampa;
 	private TipoCamisa tipo;
 	private	String descricao;
+	private int codigoCamisa;
+	static private int cont = 2203;
 	
 	
 	public Camisa(TamanhoCamisa tamanho, double preco, String corEstampa, TipoCamisa tipo, String descricao){
-		
+		this.codigoCamisa = cont;
+		Camisa.aumentaCod();
 		this.tamanho = tamanho;
 		this.preco = preco;
 		this.corEstampa = corEstampa;
 		this.tipo = tipo;
 		this.descricao = descricao;
 		
+	}
+	
+	public int getCodigo(){
+		return this.codigoCamisa;
+	}
+	
+	
+	public static void aumentaCod(){
+		cont++;
 	}
 
 	public TamanhoCamisa getTamanho() {

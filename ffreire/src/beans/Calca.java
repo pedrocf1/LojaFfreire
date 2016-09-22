@@ -4,17 +4,28 @@ public class Calca {
 	
 private	int tamanho;
 private	double preco;
-private	TipoCamisa tipo;
+private	TipoCalca tipo;
 private	String cor;
 private	String descricao;
+private int codigoCalca;
+static private int cont = 2202;
 	
-	public Calca(int tamanho, double preco, TipoCamisa tipo, String cor, String descricao) {
-		
+	public Calca(int tamanho, double preco, TipoCalca tipo, String cor, String descricao) {
+		this.codigoCalca = cont;
+		Calca.aumentaCod();
 		this.tamanho = tamanho;
 		this.preco = preco;
 		this.tipo = tipo;
 		this.cor = cor;
 		this.descricao = descricao;
+	}
+	
+	public static void aumentaCod(){
+		cont++;
+	}
+	
+	public int getCodigo(){
+		return this.codigoCalca;
 	}
 
 	public int getTamanho() {
@@ -33,11 +44,11 @@ private	String descricao;
 		this.preco = preco;
 	}
 
-	public TipoCamisa getTipo() {
+	public TipoCalca getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(TipoCamisa tipo) {
+	public void setTipo(TipoCalca tipo) {
 		this.tipo = tipo;
 	}
 

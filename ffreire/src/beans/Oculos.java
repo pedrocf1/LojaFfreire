@@ -6,13 +6,26 @@ public class Oculos {
 	private	TipoOculos tipo;
 	private	String cor;
 	private	String descricao;
+	private double preco;
+	private int codigoOculos;
+	static private int cont = 2203;
 	
-	public Oculos(String genero, TipoOculos tipo, String cor, String descricao) {
-		
+	public Oculos(String genero, TipoOculos tipo, String cor, String descricao,double preco) {
+		this.codigoOculos = cont;
+		Oculos.aumentaCod();
+		this.preco = preco;
 		this.genero = genero;
 		this.tipo = tipo;
 		this.cor = cor;
 		this.descricao = descricao;
+	}
+	
+	public int getCodigo(){
+		return this.codigoOculos;
+	}
+	
+	public static void aumentaCod(){
+		cont++;
 	}
 
 	public String getGenero() {
@@ -45,6 +58,10 @@ public class Oculos {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	public double getPreco(){
+		return this.preco;
 	}
 
 	
