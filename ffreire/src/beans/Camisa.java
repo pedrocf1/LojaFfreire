@@ -8,7 +8,7 @@ public class Camisa {
 	private TipoCamisa tipo;
 	private	String descricao;
 	private int codigoCamisa;
-	static private int cont = 2203;
+	static private int cont = 4403;
 	
 	
 	public Camisa(TamanhoCamisa tamanho, double preco, String corEstampa, TipoCamisa tipo, String descricao){

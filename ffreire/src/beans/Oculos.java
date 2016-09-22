@@ -8,7 +8,7 @@ public class Oculos {
 	private	String descricao;
 	private double preco;
 	private int codigoOculos;
-	static private int cont = 2203;
+	static private int cont = 5503;
 	
 	public Oculos(String genero, TipoOculos tipo, String cor, String descricao,double preco) {
 		this.codigoOculos = cont;
