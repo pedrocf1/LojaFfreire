@@ -1,5 +1,7 @@
 package controles;
 
+import java.util.ArrayList;
+
 import beans.Bermudas;
 
 public interface ICadastroBermudas {
@@ -9,6 +11,7 @@ public interface ICadastroBermudas {
 	Bermudas buscarCod(int cod);
 	void remover(Object objeto);
 	void atualizar(Object objeto);
-	Bermudas listar(Bermudas berm);
+	ArrayList<Bermudas> listar();
+	
 	
 }

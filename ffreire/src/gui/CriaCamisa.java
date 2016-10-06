@@ -11,9 +11,11 @@ import javax.swing.DefaultComboBoxModel;
 
 import beans.Bermudas;
 import beans.Camisa;
+import beans.Funcionario;
 import beans.TamanhoCamisa;
 import beans.TipoBermuda;
 import beans.TipoCamisa;
+import fachada.Fachada;
 import fachada.IFachada;
 
 import javax.swing.JLabel;
@@ -52,8 +54,9 @@ public class CriaCamisa extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CriaCamisa(IFachada fachada,TipoCamisa tipo) {
+	public CriaCamisa(IFachada fachada,TipoCamisa tipo,int opVolta,Funcionario func) {
 		this.fachada = fachada;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 429, 506);
 		contentPane = new JPanel();
@@ -74,12 +77,14 @@ public class CriaCamisa extends JFrame {
 		lblTamanhoDaCamisa.setBounds(21, 26, 114, 21);
 		panel.add(lblTamanhoDaCamisa);
 		
-		JLabel label = new JLabel("Tamanho");
-		label.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		label.setBounds(21, 140, 85, 35);
-		panel.add(label);
+		JLabel labelTamanho = new JLabel("Tamanho");
+		labelTamanho.setVisible(false);
+		labelTamanho.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		labelTamanho.setBounds(21, 140, 85, 35);
+		panel.add(labelTamanho);
 		
 		txtTamanho = new JTextField();
+		txtTamanho.setVisible(false);
 		txtTamanho.setColumns(10);
 		txtTamanho.setBounds(175, 149, 134, 26);
 		panel.add(txtTamanho);
@@ -88,6 +93,11 @@ public class CriaCamisa extends JFrame {
 		txtPreco.setColumns(10);
 		txtPreco.setBounds(175, 210, 134, 26);
 		panel.add(txtPreco);
+		
+		if(tipo == TipoCamisa.SOCIAL){
+			labelTamanho.setVisible(false);
+			txtTamanho.setVisible(false);
+		}
 		
 		JLabel label_1 = new JLabel("pre\u00E7o");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -115,9 +125,11 @@ public class CriaCamisa extends JFrame {
 		panel.add(label_3);
 		
 		JButton btnNewButton = new JButton("Cadastrar");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnNewButton.addActionListener(new ActionListener() { //ADICIONA CAMISA E VOLTA A PAGINA ANTERIOR
 			public void actionPerformed(ActionEvent arg0) {
 				try{
+					
+					
 				TamanhoCamisa tamanho = null;
 				int pega = cbTamanhoCamisa.getSelectedIndex();
 				if(pega == 0){
@@ -140,6 +152,9 @@ public class CriaCamisa extends JFrame {
 				fachada.cadastrarCamisa(camisa);
 				JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
 				
+				dispose();
+				AdcCamisa cam = new AdcCamisa(fachada,opVolta,func);
+				cam.setVisible(true);
 				}catch(NumberFormatException erro){
 					 JOptionPane.showMessageDialog(null, "Campo preenchido errado!");
 				 }
@@ -147,5 +162,16 @@ public class CriaCamisa extends JFrame {
 		});
 		btnNewButton.setBounds(10, 411, 89, 23);
 		panel.add(btnNewButton);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				AdcCamisa camisa = new AdcCamisa(fachada,opVolta,func);
+				camisa.setVisible(true);
+			}
+		});
+		btnVoltar.setBounds(196, 411, 113, 23);
+		panel.add(btnVoltar);
 	}
 }

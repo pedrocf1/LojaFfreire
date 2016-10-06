@@ -1,5 +1,7 @@
 package controles;
 
+import java.util.ArrayList;
+
 import beans.Oculos;
 import repositorio.IRepositorioOculos;
 import repositorio.RepositorioOculos;
@@ -15,9 +17,9 @@ private IRepositorioOculos repositorio;
 	}
 	
 	@Override
-	public void cadastrar(Object objeto) {
+	public void cadastrar(Oculos oculos) {
 		
-		this.repositorio.cadastrar(objeto);
+		this.repositorio.cadastrar(oculos);
 		
 	}
 
@@ -42,8 +44,8 @@ private IRepositorioOculos repositorio;
 	}
 
 	@Override
-	public Oculos listar(Oculos oculos) {
-		
+	public ArrayList<Oculos> listar() {
+		ArrayList<Oculos> oculos = new ArrayList<Oculos>();
 		oculos = this.repositorio.listar();
 		return oculos;
 	}

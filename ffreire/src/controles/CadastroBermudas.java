@@ -1,6 +1,8 @@
 
 package controles;
 
+import java.util.ArrayList;
+
 import beans.Bermudas;
 import repositorio.IRepositorioBermudas;
 import repositorio.RepositorioBermudas;
@@ -44,9 +46,10 @@ public class CadastroBermudas implements ICadastroBermudas {
 	}
 
 	@Override
-	public Bermudas listar(Bermudas berm) {
-		berm = this.repositorio.listar();
-		return berm;
+	public ArrayList<Bermudas> listar() {
+		ArrayList<Bermudas> bermuda = new ArrayList<Bermudas>();
+		bermuda = this.repositorio.listar();
+		return bermuda;
 	}
 
 	@Override

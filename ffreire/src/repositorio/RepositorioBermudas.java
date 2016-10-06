@@ -100,14 +100,10 @@ public class RepositorioBermudas implements IRepositorioBermudas {
 	}// FIM CLASSE ATUALIZAR
 
 	@Override
-	public Bermudas listar() {
+	public ArrayList<Bermudas> listar() {
 		
-		Bermudas berm = null;
-		for(int cont = 0;cont <= this.bermuda.size();cont++){
-			berm = this.bermuda.get(cont);
-			return berm;
-		}
-		return berm;
+		
+		return this.bermuda;
 	}
 
 	@Override

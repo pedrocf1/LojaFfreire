@@ -18,12 +18,12 @@ public class RepositorioCalca implements IRepositorioCalca {
 	}
 	
 	@Override
-	public void cadastrar(Object objeto) {
+	public void cadastrar(Calca calca) {
 
-		if(objeto instanceof Calca){
+		
 			
-			this.calca.add((Calca) objeto);
-		}
+			this.calca.add(calca);
+		
 
 		
 	}// FIM CLASSE CADASTRAR
@@ -101,18 +101,15 @@ public class RepositorioCalca implements IRepositorioCalca {
 	}// FIM CLASSE ATUALIZAR
 
 	@Override
-	public Calca listar() {
-		Calca calca = null;
-		for(int cont = 0;cont > this.calca.size();cont++){
-			calca = this.calca.get(cont);
-			return calca;
-		}
-		return calca;
+	public ArrayList<Calca> listar() {
+
+		return this.calca;
 	}
 
 	@Override
 	public Calca buscarCod(int cod) {
 		Calca calca = null;
+		
 		for(int cont = 0 ;cont <=this.calca.size();cont++){
 			calca = this.calca.get(cont);
 			if(calca.getCodigo() == cod)

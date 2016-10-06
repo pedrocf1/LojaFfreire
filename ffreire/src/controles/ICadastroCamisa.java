@@ -1,13 +1,15 @@
 package controles;
 
+import java.util.ArrayList;
+
 import beans.Camisa;
 
 public interface ICadastroCamisa {
 	
-	void cadastrar(Object objeto);
+	void cadastrar(Camisa camisa);
 	Camisa buscar(Object objeto);
 	Camisa buscarCod(int cod);
 	void remover(Object objeto);
 	void atualizar(Object objeto);
-	Camisa listar(Camisa camisa);
+	ArrayList<Camisa> listar();
 }

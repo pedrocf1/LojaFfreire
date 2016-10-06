@@ -1,5 +1,7 @@
 package repositorio;
 
+import java.util.ArrayList;
+
 import beans.Bermudas;
 
 public interface IRepositorioBermudas {
@@ -10,6 +12,6 @@ public interface IRepositorioBermudas {
 	Bermudas buscarCod(int cod);
 	void remover(Object objeto);
 	void atualizar(Object objeto);
-	Bermudas listar();
+	ArrayList<Bermudas> listar();
 	
 }

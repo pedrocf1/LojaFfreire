@@ -1,5 +1,7 @@
 package controles;
 
+import java.util.ArrayList;
+
 import beans.Camisa;
 import repositorio.IRepositorioCamisa;
 import repositorio.RepositorioCamisa;
@@ -15,9 +17,9 @@ public class CadastroCamisa implements ICadastroCamisa {
 	}
 	
 	@Override
-	public void cadastrar(Object objeto) {
+	public void cadastrar(Camisa camisa) {
 		
-		this.repositorio.cadastrar(objeto);
+		this.repositorio.cadastrar(camisa);
 		
 	}
 
@@ -42,7 +44,8 @@ public class CadastroCamisa implements ICadastroCamisa {
 	}
 
 	@Override
-	public Camisa listar(Camisa camisa) {
+	public ArrayList<Camisa> listar() {
+		ArrayList<Camisa> camisa = new ArrayList<Camisa>();
 		camisa = this.repositorio.listar();
 		return camisa;
 	}

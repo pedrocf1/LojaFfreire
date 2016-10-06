@@ -63,10 +63,6 @@ public class AdcCamisa extends JFrame {
 		lblTipoDeCamisa.setBounds(92, 62, 117, 42);
 		panel.add(lblTipoDeCamisa);
 		
-		JButton bntAdicionar = new JButton("Adicionar");
-		bntAdicionar.setBounds(18, 513, 104, 35);
-		panel.add(bntAdicionar);
-		
 		JButton btnVoltar = new JButton("voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -76,14 +72,14 @@ public class AdcCamisa extends JFrame {
 				
 			}
 		});
-		btnVoltar.setBounds(177, 514, 105, 34);
+		btnVoltar.setBounds(95, 499, 105, 34);
 		panel.add(btnVoltar);
 		
 		JButton btnBasica = new JButton("Basica");
 		btnBasica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				CriaCamisa camisa = new CriaCamisa(fachada,TipoCamisa.BASICA);
+				CriaCamisa camisa = new CriaCamisa(fachada,TipoCamisa.BASICA,opVolta,func);
 				camisa.setVisible(true);
 			}
 		});
@@ -94,7 +90,7 @@ public class AdcCamisa extends JFrame {
 		btnPolo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				CriaCamisa camisa = new CriaCamisa(fachada,TipoCamisa.POLO);
+				CriaCamisa camisa = new CriaCamisa(fachada,TipoCamisa.POLO,opVolta,func);
 				camisa.setVisible(true);
 			}
 		});
@@ -105,7 +101,7 @@ public class AdcCamisa extends JFrame {
 		btnRegata.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				CriaCamisa camisa = new CriaCamisa(fachada,TipoCamisa.REGATA);
+				CriaCamisa camisa = new CriaCamisa(fachada,TipoCamisa.REGATA,opVolta,func);
 				camisa.setVisible(true);
 			}
 		});
@@ -116,7 +112,7 @@ public class AdcCamisa extends JFrame {
 		btnSocial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				CriaCamisa camisa = new CriaCamisa(fachada,TipoCamisa.SOCIAL);
+				CriaCamisa camisa = new CriaCamisa(fachada,TipoCamisa.SOCIAL,opVolta,func);
 				camisa.setVisible(true);
 			}
 		});
@@ -127,7 +123,7 @@ public class AdcCamisa extends JFrame {
 		btnUv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				CriaCamisa camisa = new CriaCamisa(fachada,TipoCamisa.UV);
+				CriaCamisa camisa = new CriaCamisa(fachada,TipoCamisa.UV,opVolta,func);
 				camisa.setVisible(true);
 			}
 		});

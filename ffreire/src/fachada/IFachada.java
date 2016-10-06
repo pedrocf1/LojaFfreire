@@ -1,22 +1,25 @@
 package fachada;
 
 import controles.*;
+
+import java.util.ArrayList;
+
 import beans.*;
 
 public interface IFachada {
 	
 	void cadastrarFuncionario( Funcionario func);
-	void cadastrarCamisa(Object objeto);
+	void cadastrarCamisa(Camisa camisa);
 	void cadastrarCliente(Object objeto);
-	void cadastrarCalca(Object objeto);
-	void cadastrarOculos(Object objeto);
+	void cadastrarCalca(Calca calca);
+	void cadastrarOculos(Oculos oculos);
 	void cadastrarBermuda(Bermudas berm);
 	
-	Bermudas listar(Bermudas berm);
-	Camisa listar(Camisa camisa);
-	Calca listar(Calca calca);
-	Oculos listar(Oculos oculos);
-	Funcionario listar(Object objeto);
+	ArrayList<Bermudas> listarBermuda();
+	ArrayList<Camisa> listarCamisa();
+	ArrayList<Calca> listarCalca();
+	ArrayList<Oculos> listarOculos();
+	Funcionario listarFunc();
 	
 	void atualizaFuncionario( Object objeto);
 	void atualizaCamisa(Object objeto);

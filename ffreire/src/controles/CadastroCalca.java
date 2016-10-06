@@ -1,5 +1,7 @@
 package controles;
 
+import java.util.ArrayList;
+
 import beans.Calca;
 import repositorio.IRepositorioCalca;
 import repositorio.RepositorioCalca;
@@ -17,9 +19,9 @@ public class CadastroCalca implements ICadastroCalca {
 	}
 	
 	@Override
-	public void cadastrar(Object objeto) {
+	public void cadastrar(Calca calca) {
 		
-		this.repositorio.cadastrar(objeto);
+		this.repositorio.cadastrar(calca);
 		
 	}
 
@@ -44,7 +46,8 @@ public class CadastroCalca implements ICadastroCalca {
 	}
 
 	@Override
-	public Calca listar(Calca calca) {
+	public ArrayList<Calca> listar() {
+		ArrayList<Calca> calca = new ArrayList<Calca>();
 		calca = this.repositorio.listar();
 		return calca;
 	}

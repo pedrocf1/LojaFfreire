@@ -83,6 +83,14 @@ public class LoginAdm extends JFrame {
 		panel.add(btnNewButton);
 		
 		JButton btnVender = new JButton("Vender");
+		btnVender.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				Funcionario func = null;
+				Vendas venda = new Vendas(fachada,1,func);
+				venda.setVisible(true);
+			}
+		});
 		btnVender.setBounds(182, 103, 141, 33);
 		panel.add(btnVender);
 	}

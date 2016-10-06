@@ -105,7 +105,7 @@ public class CriaOculos extends JFrame {
 		
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) { //ADICIONA OCULOS E VOLTA A PAGINA ANTERIOR
 				
 				
 				try{			
@@ -116,8 +116,11 @@ public class CriaOculos extends JFrame {
 					
 					Oculos oculos = new Oculos(genero,tipo,cor, descricao,preco);		
 					
-						fachada.cadastrarCalca(oculos);
-					
+						fachada.cadastrarOculos(oculos);
+						JOptionPane.showMessageDialog(null, "Cadastro Realizado com susseso");
+						dispose();
+						AdcOculos oc = new AdcOculos(fachada,opVolta,func);
+						oc.setVisible(true);
 				}catch(NumberFormatException erro){
 						 JOptionPane.showMessageDialog(null, "Campo preenchido errado!");
 				}	

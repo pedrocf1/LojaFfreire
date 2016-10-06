@@ -38,7 +38,7 @@ public class TelaLogin extends JFrame {
 			public void run() {
 				try {
 					IFachada fachada = null;
-					TelaLogin frame = new TelaLogin(Fachada.instance);
+					TelaLogin frame = new TelaLogin(Fachada.getInstance());
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -9,7 +9,9 @@ private	String cor;
 private	String descricao;
 private int codigoCalca;
 static private int cont = 3302;
-	
+
+public Calca(){}
+
 	public Calca(int tamanho, double preco, TipoCalca tipo, String cor, String descricao) {
 		this.codigoCalca = cont;
 		Calca.aumentaCod();

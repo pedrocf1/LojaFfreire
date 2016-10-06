@@ -109,8 +109,8 @@ public class CriaBermuda extends JFrame {
 		JButton bntAdicionar = new JButton("Adicionar");
 		bntAdicionar.addActionListener(new ActionListener() {
 			
-			public void actionPerformed(ActionEvent e) {
-				try{			
+			public void actionPerformed(ActionEvent e) {//ADICIONA BERMUDA E VOLTA A PAGINA ANTERIOR
+				try{									
 				int tamanho = Integer.parseInt(txtTamanho.getText());
 				double preco = Double.parseDouble(txtPreco.getText());
 				String cor = txtCor.getText();
@@ -118,7 +118,10 @@ public class CriaBermuda extends JFrame {
 				Bermudas berm = new Bermudas(tamanho,preco,tipo,cor, descricao);		
 				
 					fachada.cadastrarBermuda(berm);
-					
+					JOptionPane.showMessageDialog(null, "Cadastro Realizado com susseso");
+					dispose();
+					AdcBermuda bermuda = new AdcBermuda(fachada,opVolta,func);
+					bermuda.setVisible(true);
 			}catch(NumberFormatException erro){
 					 JOptionPane.showMessageDialog(null, "Campo preenchido errado!");
 				 }	

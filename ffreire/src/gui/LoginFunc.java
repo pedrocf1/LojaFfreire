@@ -58,7 +58,7 @@ public class LoginFunc extends JFrame {
 		btnVender.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Vendas vendas = new Vendas(fachada);
+				Vendas vendas = new Vendas(fachada,2,func);
 				vendas.setVisible(true);
 			}
 		});

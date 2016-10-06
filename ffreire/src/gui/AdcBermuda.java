@@ -120,13 +120,8 @@ public class AdcBermuda extends JFrame {
 		
 		JLabel lblTipoDeBermuda = new JLabel("tipo de bermuda");
 		lblTipoDeBermuda.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblTipoDeBermuda.setBounds(25, 37, 117, 42);
+		lblTipoDeBermuda.setBounds(85, 36, 117, 42);
 		panel.add(lblTipoDeBermuda);
-		
-		JLabel label_1 = new JLabel("Quantidade");
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		label_1.setBounds(200, 37, 89, 42);
-		panel.add(label_1);
 		
 		JButton bntVoltar = new JButton("voltar");
 		bntVoltar.addActionListener(new ActionListener() {

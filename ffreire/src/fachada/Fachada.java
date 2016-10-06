@@ -1,5 +1,7 @@
 package fachada;
 
+import java.util.ArrayList;
+
 import beans.Bermudas;
 import beans.Calca;
 import beans.Camisa;
@@ -39,8 +41,8 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void cadastrarCamisa(Object objeto) {
-		this.cadastroCamisa.cadastrar(objeto);
+	public void cadastrarCamisa(Camisa camisa) {
+		this.cadastroCamisa.cadastrar(camisa);
 		
 	}
 
@@ -51,14 +53,14 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void cadastrarCalca(Object objeto) {
-		this.cadastroCalca.cadastrar(objeto);
+	public void cadastrarCalca(Calca calca) {
+		this.cadastroCalca.cadastrar(calca);
 		
 	}
 
 	@Override
-	public void cadastrarOculos(Object objeto) {
-		this.cadastroOculos.cadastrar(objeto);
+	public void cadastrarOculos(Oculos oculos) {
+		this.cadastroOculos.cadastrar(oculos);
 		
 	}
 
@@ -196,7 +198,7 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public Funcionario listar(Object objeto) {
+	public Funcionario listarFunc() {
 		
 		
 		
@@ -210,23 +212,27 @@ public class Fachada implements IFachada{
 		return confirma;
 	}
 	@Override
-	public Bermudas listar(Bermudas berm) {
-		berm = this.cadastroBermudas.listar(berm);
-		return berm;
+	public ArrayList<Bermudas> listarBermuda() {
+		ArrayList<Bermudas> bermuda = new ArrayList<Bermudas>();
+		bermuda = this.cadastroBermudas.listar();
+		return bermuda;
 	}
 	@Override
-	public Camisa listar(Camisa camisa) {
-		camisa = this.cadastroCamisa.listar(camisa);
+	public ArrayList<Camisa> listarCamisa() {
+		ArrayList<Camisa> camisa = new ArrayList<Camisa>();
+		camisa = this.cadastroCamisa.listar();
 		return camisa;
 	}
 	@Override
-	public Calca listar(Calca calca) {
-		calca = this.cadastroCalca.listar(calca);
+	public ArrayList<Calca> listarCalca() {
+		ArrayList<Calca>calca = new ArrayList<Calca>();
+		calca = this.cadastroCalca.listar();
 		return calca;
 	}
 	@Override
-	public Oculos listar(Oculos oculos) {
-		oculos = this.cadastroOculos.listar(oculos);
+	public ArrayList<Oculos> listarOculos() {
+		ArrayList<Oculos> oculos = new ArrayList<Oculos>();
+		oculos = this.cadastroOculos.listar();
 		return oculos;
 	}
 	@Override

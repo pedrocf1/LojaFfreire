@@ -18,12 +18,12 @@ public class RepositorioOculos implements IRepositorioOculos {
 	}
 	
 	@Override
-	public void cadastrar(Object objeto) {
+	public void cadastrar(Oculos oculos) {
 
-		if(objeto instanceof Oculos){
+		
 			
-			this.oculos.add((Oculos) objeto);
-		}
+			this.oculos.add(oculos);
+		
 
 		
 	}// FIM CLASSE CADASTRAR
@@ -101,13 +101,9 @@ public class RepositorioOculos implements IRepositorioOculos {
 	}// FIM CLASSE ATUALIZAR
 
 	@Override
-	public Oculos listar() {
-		Oculos oculos = null;
-		for(int cont = 0;cont > this.oculos.size();cont++){
-			oculos = this.oculos.get(cont);
-			return oculos;
-		}
-		return oculos;
+	public ArrayList<Oculos> listar() {
+
+		return this.oculos;
 	}
 
 	@Override

@@ -1,14 +1,16 @@
 package repositorio;
 
+import java.util.ArrayList;
+
 import beans.Camisa;
 
 public interface IRepositorioCamisa {
 	
-	void cadastrar(Object objeto);
+	void cadastrar(Camisa camisa);
 	Camisa buscar(Object objeto);
 	Camisa bucarCod(int cod);
 	void remover(Object objeto);
 	void atualizar(Object objeto);
-	Camisa listar();
+	ArrayList<Camisa> listar();
 
 }

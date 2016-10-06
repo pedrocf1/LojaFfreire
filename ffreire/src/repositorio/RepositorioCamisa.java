@@ -18,12 +18,12 @@ public class RepositorioCamisa implements IRepositorioCamisa {
 	}
 	
 	@Override
-	public void cadastrar(Object objeto) {
+	public void cadastrar(Camisa camisa) {
 
-		if(objeto instanceof Camisa){
+	
 			
-			this.camisa.add((Camisa) objeto);
-		}
+			this.camisa.add(camisa);
+	
 
 		
 	}// FIM CLASSE CADASTRAR
@@ -102,13 +102,9 @@ public class RepositorioCamisa implements IRepositorioCamisa {
 	}// FIM CLASSE ATUALIZAR
 
 	@Override
-	public Camisa listar() {
-		Camisa camisa = null;
-		for(int cont = 0;cont > this.camisa.size();cont++){
-			camisa = this.camisa.get(cont);
-			return camisa;
-		}
-		return camisa;
+	public ArrayList<Camisa> listar() {
+
+		return this.camisa;
 	}
 
 	@Override

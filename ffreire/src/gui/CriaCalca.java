@@ -105,7 +105,7 @@ public class CriaCalca extends JFrame {
 		
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {//ADICIONA CALCA E VOLTA A PAGINA ANTERIOR
 				
 				try{			
 				int tamanho = Integer.parseInt(txtTamanho.getText());
@@ -115,7 +115,11 @@ public class CriaCalca extends JFrame {
 				Calca calca = new Calca(tamanho,preco,tipo,cor, descricao);		
 				
 					fachada.cadastrarCalca(calca);
-				
+					//fachada.listar(calca);
+					JOptionPane.showMessageDialog(null, "Cadastro Realizado com susseso");
+					dispose();
+					AdcCalca cal = new AdcCalca(fachada,opVolta,func);
+					cal.setVisible(true);
 			}catch(NumberFormatException erro){
 					 JOptionPane.showMessageDialog(null, "Campo preenchido errado!");
 			}	
