@@ -9,6 +9,8 @@ private	String cor;
 private	String descricao;
 private int codigoCalca;
 static private int cont = 3302;
+private int quantidade;
+private String img;
 
 public Calca(){}
 
@@ -20,6 +22,7 @@ public Calca(){}
 		this.tipo = tipo;
 		this.cor = cor;
 		this.descricao = descricao;
+		aumentarQtd();
 	}
 	
 	public static void aumentaCod(){
@@ -32,6 +35,18 @@ public Calca(){}
 
 	public int getTamanho() {
 		return tamanho;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
 	}
 
 	public void setTamanho(int tamanho) {
@@ -71,9 +86,13 @@ public Calca(){}
 	}
 	
 	
+	public void aumentarQtd(){
+		this.quantidade++;
+	}
 	
-	
-	
+	public int getQuantidade(){
+		return quantidade;
+	}
 	
 
 }

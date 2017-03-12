@@ -19,11 +19,25 @@ public class RepositorioOculos implements IRepositorioOculos {
 	
 	@Override
 	public void cadastrar(Oculos oculos) {
-
+		//this.oculos.add(oculos);
 		
-			
+		if(this.oculos.size() == 0){
 			this.oculos.add(oculos);
-		
+		}else if(this.oculos.size() != 0){
+			for(int i=0;i<=this.oculos.size();i++){
+				
+				
+				if(i>0){
+					if(this.oculos.get(i-1).equals(oculos)){
+						this.oculos.get(i-1).aumentarQtd();
+					}
+				}else if(i == this.oculos.size()-1){
+					this.oculos.add(oculos);
+				}
+				
+				
+			}
+		}
 
 		
 	}// FIM CLASSE CADASTRAR

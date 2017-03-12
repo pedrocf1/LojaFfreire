@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.DefaultComboBoxModel;
 
 import beans.Bermudas;
@@ -35,6 +36,7 @@ public class CriaCamisa extends JFrame {
 	private JTextField txtCor;
 	private JTextField txtDescricao;
 	private IFachada fachada;
+	private String img;
 	/**
 	 * Launch the application.
 	 */
@@ -58,7 +60,7 @@ public class CriaCamisa extends JFrame {
 		this.fachada = fachada;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 429, 506);
+		setBounds(100, 100, 429, 594);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -149,6 +151,7 @@ public class CriaCamisa extends JFrame {
 				String descricao = txtDescricao.getText();
 						
 				Camisa camisa = new Camisa(tamanho,preco,cor,tipo,descricao);	
+				camisa.setImg(img);
 				fachada.cadastrarCamisa(camisa);
 				JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
 				
@@ -160,7 +163,7 @@ public class CriaCamisa extends JFrame {
 				 }
 			}
 		});
-		btnNewButton.setBounds(10, 411, 89, 23);
+		btnNewButton.setBounds(10, 481, 89, 23);
 		panel.add(btnNewButton);
 		
 		JButton btnVoltar = new JButton("Voltar");
@@ -171,7 +174,20 @@ public class CriaCamisa extends JFrame {
 				camisa.setVisible(true);
 			}
 		});
-		btnVoltar.setBounds(196, 411, 113, 23);
+		btnVoltar.setBounds(196, 481, 113, 23);
 		panel.add(btnVoltar);
+		
+		JButton btnAdicionarImagem = new JButton("Adicionar imagem");
+		btnAdicionarImagem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				JFileChooser fc = new JFileChooser();
+				int escolha = fc.showOpenDialog(fc);
+				img = fc.getSelectedFile().getAbsolutePath();
+				
+			}
+		});
+		btnAdicionarImagem.setBounds(107, 427, 125, 23);
+		panel.add(btnAdicionarImagem);
 	}
 }

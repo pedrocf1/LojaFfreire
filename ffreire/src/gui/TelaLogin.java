@@ -18,7 +18,7 @@ import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
-
+import repositorio.RepositorioBermudas;
 import fachada.*;
 
 public class TelaLogin extends JFrame {
@@ -37,6 +37,7 @@ public class TelaLogin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					IFachada fachada = null;
 					TelaLogin frame = new TelaLogin(Fachada.getInstance());
 					frame.setVisible(true);

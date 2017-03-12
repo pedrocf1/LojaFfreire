@@ -19,12 +19,24 @@ public class RepositorioCalca implements IRepositorioCalca {
 	
 	@Override
 	public void cadastrar(Calca calca) {
-
+//			this.calca.add(calca);
 		
-			
+		if(this.calca.size() == 0){
 			this.calca.add(calca);
-		
-
+		}else if(this.calca.size() != 0){
+			for(int i=0;i<=this.calca.size();i++){
+								
+				if(i>0){
+					if(this.calca.get(i-1).equals(calca)){
+						this.calca.get(i-1).aumentarQtd();
+					}
+				}else if(i == this.calca.size()-1){
+					this.calca.add(calca);
+				}
+				
+				
+			}
+		}
 		
 	}// FIM CLASSE CADASTRAR
 

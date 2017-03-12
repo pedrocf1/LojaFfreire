@@ -20,6 +20,8 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -31,6 +33,7 @@ public class CriaCalca extends JFrame {
 	private JTextField txtCor;
 	private JTextField txtDescricao;
 	private IFachada fachada;
+	private String img;
 	/**
 	 * Launch the application.
 	 */
@@ -53,7 +56,7 @@ public class CriaCalca extends JFrame {
 	public CriaCalca(IFachada fachada,TipoCalca tipo, int opVolta,Funcionario func) {
 		this.fachada = fachada;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 386, 517);
+		setBounds(100, 100, 386, 540);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -113,7 +116,7 @@ public class CriaCalca extends JFrame {
 				String cor = txtCor.getText();
 				String descricao = txtDescricao.getText();
 				Calca calca = new Calca(tamanho,preco,tipo,cor, descricao);		
-				
+				calca.setImg(img);
 					fachada.cadastrarCalca(calca);
 					//fachada.listar(calca);
 					JOptionPane.showMessageDialog(null, "Cadastro Realizado com susseso");
@@ -126,7 +129,7 @@ public class CriaCalca extends JFrame {
 											
 			}
 		});
-		btnAdicionar.setBounds(22, 399, 106, 31);
+		btnAdicionar.setBounds(22, 426, 106, 31);
 		panel.add(btnAdicionar);
 		
 		JButton btnVoltar = new JButton("Voltar");
@@ -137,7 +140,19 @@ public class CriaCalca extends JFrame {
 				calca.setVisible(true);
 			}
 		});
-		btnVoltar.setBounds(198, 400, 106, 29);
+		btnVoltar.setBounds(198, 427, 106, 29);
 		panel.add(btnVoltar);
+		
+		JButton btnAdicionarImagem = new JButton("Adicionar Imagem");
+		btnAdicionarImagem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fc = new JFileChooser();
+				int escolha = fc.showOpenDialog(fc);
+				img = fc.getSelectedFile().getAbsolutePath();
+				
+			}
+		});
+		btnAdicionarImagem.setBounds(109, 354, 122, 23);
+		panel.add(btnAdicionarImagem);
 	}
 }

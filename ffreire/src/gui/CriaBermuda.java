@@ -19,6 +19,8 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -32,6 +34,7 @@ public class CriaBermuda extends JFrame {
 	private JTextField txtDescricao;
 	private IFachada fachada;
 	TipoBermuda tipo;
+	private String img;
 	/**
 	 * Launch the application.
 	 */
@@ -56,7 +59,7 @@ public class CriaBermuda extends JFrame {
 		this.op = op;
 		this.tipo = tipo;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 388, 552);
+		setBounds(100, 100, 388, 586);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -115,8 +118,9 @@ public class CriaBermuda extends JFrame {
 				double preco = Double.parseDouble(txtPreco.getText());
 				String cor = txtCor.getText();
 				String descricao = txtDescricao.getText();
-				Bermudas berm = new Bermudas(tamanho,preco,tipo,cor, descricao);		
 				
+				Bermudas berm = new Bermudas(tamanho,preco,tipo,cor, descricao);		
+				berm.setImg(img);
 					fachada.cadastrarBermuda(berm);
 					JOptionPane.showMessageDialog(null, "Cadastro Realizado com susseso");
 					dispose();
@@ -129,7 +133,7 @@ public class CriaBermuda extends JFrame {
 		
 			}
 		});
-		bntAdicionar.setBounds(10, 415, 106, 31);
+		bntAdicionar.setBounds(10, 454, 106, 31);
 		panel.add(bntAdicionar);
 		
 		JButton btnVoltar = new JButton("Voltar");
@@ -140,7 +144,21 @@ public class CriaBermuda extends JFrame {
 				ab.setVisible(true);
 			}
 		});
-		btnVoltar.setBounds(186, 416, 106, 29);
+		btnVoltar.setBounds(186, 455, 106, 29);
 		panel.add(btnVoltar);
+		
+		JButton btnAdicionarFoto = new JButton("Adicionar foto");
+		btnAdicionarFoto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				JFileChooser fc = new JFileChooser();
+				int escolha = fc.showOpenDialog(fc);
+				img = fc.getSelectedFile().getAbsolutePath();
+				
+				
+			}
+		});
+		btnAdicionarFoto.setBounds(97, 373, 134, 35);
+		panel.add(btnAdicionarFoto);
 	}
 }

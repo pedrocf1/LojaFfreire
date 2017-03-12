@@ -19,6 +19,8 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -30,6 +32,7 @@ public class CriaOculos extends JFrame {
 	private JTextField txtCor;
 	private JTextField txtDescricao;
 	private IFachada fachada;
+	private String img;
 
 	/**
 	 * Launch the application.
@@ -53,7 +56,7 @@ public class CriaOculos extends JFrame {
 	public CriaOculos(IFachada fachada,TipoOculos tipo,int opVolta,Funcionario func) {
 		this.fachada = fachada;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 340, 471);
+		setBounds(100, 100, 340, 490);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -115,7 +118,7 @@ public class CriaOculos extends JFrame {
 					String descricao = txtDescricao.getText();
 					
 					Oculos oculos = new Oculos(genero,tipo,cor, descricao,preco);		
-					
+					oculos.setImg(img);
 						fachada.cadastrarOculos(oculos);
 						JOptionPane.showMessageDialog(null, "Cadastro Realizado com susseso");
 						dispose();
@@ -130,7 +133,7 @@ public class CriaOculos extends JFrame {
 				
 			
 		});
-		btnAdicionar.setBounds(10, 368, 106, 31);
+		btnAdicionar.setBounds(10, 382, 106, 31);
 		panel.add(btnAdicionar);
 		
 		JButton btnVoltar = new JButton("Voltar");
@@ -141,7 +144,20 @@ public class CriaOculos extends JFrame {
 				ap.setVisible(true);
 			}
 		});
-		btnVoltar.setBounds(186, 369, 106, 29);
+		btnVoltar.setBounds(186, 383, 106, 29);
 		panel.add(btnVoltar);
+		
+		JButton btnAdicionarImagem = new JButton("Adicionar Imagem");
+		btnAdicionarImagem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				JFileChooser fc = new JFileChooser();
+				int escolha = fc.showOpenDialog(fc);
+				img = fc.getSelectedFile().getAbsolutePath();
+				
+			}
+		});
+		btnAdicionarImagem.setBounds(100, 317, 117, 23);
+		panel.add(btnAdicionarImagem);
 	}
 }

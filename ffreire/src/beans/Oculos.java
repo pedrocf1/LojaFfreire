@@ -9,6 +9,8 @@ public class Oculos {
 	private double preco;
 	private int codigoOculos;
 	static private int cont = 5503;
+	private int quantidade;
+	private String img;
 	
 	public Oculos(String genero, TipoOculos tipo, String cor, String descricao,double preco) {
 		this.codigoOculos = cont;
@@ -18,12 +20,25 @@ public class Oculos {
 		this.tipo = tipo;
 		this.cor = cor;
 		this.descricao = descricao;
+		aumentarQtd();
 	}
 	
 	public int getCodigo(){
 		return this.codigoOculos;
 	}
 	
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
 	public static void aumentaCod(){
 		cont++;
 	}
@@ -64,6 +79,12 @@ public class Oculos {
 		return this.preco;
 	}
 
+	public void aumentarQtd(){
+		this.quantidade++;
+	}
+	public int getQuantidade(){
+		return this.quantidade;
+	}
 	
 
 	

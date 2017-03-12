@@ -1,16 +1,16 @@
 package repositorio;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import beans.Bermudas;
-
 
 public class RepositorioBermudas implements IRepositorioBermudas {
 
 	
 	
 	private ArrayList<Bermudas> bermuda;
-
+	
 	
 	public RepositorioBermudas(){
 		
@@ -21,9 +21,23 @@ public class RepositorioBermudas implements IRepositorioBermudas {
 	
 	@Override
 	public void cadastrar(Bermudas berm) {
-
+		//this.bermuda.add(berm);
+		if(this.bermuda.size() == 0){
 			this.bermuda.add(berm);
+		}else if(this.bermuda.size() != 0){
+				for(int i=0;i<=this.bermuda.size();i++){
 				
+							if(i>0){
+									if(this.bermuda.get(i-1).equals(berm)){
+										this.bermuda.get(i-1).aumentarQtd();
+									}
+								}else if(i == this.bermuda.size()-1){
+										this.bermuda.add(berm);
+									}
+				
+				
+			}
+		}
 	}// FIM CLASSE CADASTRAR
 
 	@Override
@@ -118,5 +132,7 @@ public class RepositorioBermudas implements IRepositorioBermudas {
 		
 		return berm;
 	}
-
+	
+	
+	
 }

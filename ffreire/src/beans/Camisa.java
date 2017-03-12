@@ -4,22 +4,23 @@ public class Camisa {
 	
 	private	TamanhoCamisa tamanho;
 	private	double preco;
-	private	String corEstampa;
+	private	String cor;
 	private TipoCamisa tipo;
 	private	String descricao;
 	private int codigoCamisa;
 	static private int cont = 4403;
+	private int quantidade;
+	private String img;
 	
-	
-	public Camisa(TamanhoCamisa tamanho, double preco, String corEstampa, TipoCamisa tipo, String descricao){
+	public Camisa(TamanhoCamisa tamanho, double preco, String cor, TipoCamisa tipo, String descricao){
 		this.codigoCamisa = cont;
 		Camisa.aumentaCod();
 		this.tamanho = tamanho;
 		this.preco = preco;
-		this.corEstampa = corEstampa;
+		this.cor = cor;
 		this.tipo = tipo;
 		this.descricao = descricao;
-		
+		aumentarQtd();
 	}
 	
 	public int getCodigo(){
@@ -27,6 +28,18 @@ public class Camisa {
 	}
 	
 	
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
 	public static void aumentaCod(){
 		cont++;
 	}
@@ -48,11 +61,11 @@ public class Camisa {
 	}
 
 	public String getCorEstampa() {
-		return corEstampa;
+		return cor;
 	}
 
-	public void setCorEstampa(String corEstampa) {
-		this.corEstampa = corEstampa;
+	public void setCorEstampa(String cor) {
+		this.cor = cor;
 	}
 
 	public TipoCamisa getTipo() {
@@ -71,6 +84,12 @@ public class Camisa {
 		this.descricao = descricao;
 	}
 	
+	public void aumentarQtd(){
+		this.quantidade++;
+	}
 	
-
+	public int getQuantidade(){
+		return this.quantidade;
+	}
+	
 }

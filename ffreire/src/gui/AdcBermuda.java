@@ -63,6 +63,7 @@ public class AdcBermuda extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				CriaBermuda berm = new CriaBermuda(fachada,tipo.ESPORTEFINO,opVolta,func);
+				
 				berm.setVisible(true);
 			}
 		});

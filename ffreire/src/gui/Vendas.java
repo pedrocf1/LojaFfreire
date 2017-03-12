@@ -80,10 +80,11 @@ public class Vendas extends JFrame  {
 	 * Create the frame.
 	 */
 	public Vendas(IFachada fachada, int volta,Funcionario funci) {
+		
 		this.fachada = fachada;
 		this.lblDigiteNome = lblDigiteNome; 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 692);
+		setBounds(100, 100, 568, 692);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -94,7 +95,7 @@ public class Vendas extends JFrame  {
 		panel.setLayout(null);
 		
 		this.cbEscolha = new JComboBox();
-		cbEscolha.setModel(new DefaultComboBoxModel(new String[] {"Cod. Especifico", "Codigo do produto"}));
+		cbEscolha.setModel(new DefaultComboBoxModel(new String[] {"Cod. Especifico", "Codigo do produto", "Detalhamento"}));
 		cbEscolha.setBounds(28, 110, 140, 27);
 		panel.add(cbEscolha);
 		
@@ -111,7 +112,7 @@ public class Vendas extends JFrame  {
 		panel.add(txtBuscar);
 		txtBuscar.setColumns(10);
 		
-
+		
 		
 		txtCodigo = new JTextField();
 		txtCodigo.setVisible(false);
@@ -133,38 +134,43 @@ public class Vendas extends JFrame  {
 		// PROCURA DAS ROUPAS
 		btnProcurar = new JButton("Procurar");
 		btnProcurar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try{
-				if(cbEscolha.getSelectedIndex()==0){
-					int cod = Integer.parseInt(txtBuscar.getText());
+	public void actionPerformed(ActionEvent e) {
+		try{
+				if(cbEscolha.getSelectedIndex()==0){// PROCURA DE ALGO ESPECIFICO
+						int cod = Integer.parseInt(txtBuscar.getText());
 					
-					if(cod>=2201 && cod<3302){
+				if(cod>=2201 && cod<3302){
 						Bermudas berm;
 						berm = fachada.buscaCodBerm(cod); //busca bermuda	
 						System.out.println(berm.getDescricao());
 						vendaBermuda.add(berm);
-					}else if(cod >= 3302 && cod < 4403){
+				}else if(cod >= 3302 && cod < 4403){
 						Calca calca;
 						calca = fachada.buscaCodCal(cod); //busca calca
 						vendaCalca.add(calca);
-					}else if(cod>= 4403 && cod<5503){
+				}else if(cod>= 4403 && cod<5503){
 						Camisa camisa;
 						camisa = fachada.buscaCodCam(cod); //busca camisa
 						vendaCamisa.add(camisa);
-					}else if(cod>=5503 && cod <6603){
+				}else if(cod>=5503 && cod <6603){
 						Oculos oculos;
 						oculos = fachada.buscaCodOculos(cod); // busca oculos
 						vendaOculos.add(oculos);
-					}else{JOptionPane.showMessageDialog(null, "Algo foi preenchido errado");}
+				}else{JOptionPane.showMessageDialog(null, "Algo foi preenchido errado");}
 					
-					JOptionPane.showMessageDialog(null, "Adicionado ao carrinho!");
+					//JOptionPane.showMessageDialog(null, "Adicionado ao carrinho!");
 					
-				}else if(cbEscolha.getSelectedIndex()==1){//PROCURA PRODUTO POR CODIGO
+				}else if(cbEscolha.getSelectedIndex()==1){ //PROCURA PRODUTO POR CODIGO
 					
-					if(txtBuscar.getText().equals("1101")){
+				if(txtBuscar.getText().equals("1101")){
 						
 						// CRIAÇÃO DO TABLE COM UMA ROLL PARA LISTAR AS BERMUDAS						
 						//table = new JTable();
+						
+						scrollCalca.setVisible(false);
+						scrollCamisa.setVisible(false);
+						scrollOculos.setVisible(false);
+					
 						scrollBerm = new JScrollPane(table);
 						scrollBerm.setBounds(10, 176, 454, 243);
 						DefaultTableModel modelo = new DefaultTableModel();
@@ -175,6 +181,7 @@ public class Vendas extends JFrame  {
 						modelo.addColumn("cor");
 						modelo.addColumn("descrição");
 						modelo.addColumn("Cod.Produto");
+						modelo.addColumn("quantidade");
 						panel.add(scrollBerm);
 						ArrayList<Bermudas> bermuda = new ArrayList<Bermudas>();
 							
@@ -182,7 +189,7 @@ public class Vendas extends JFrame  {
 							//Listar todas as bermudas numa tabela
 							for(int i = 0;i<bermuda.size();i++){
 								
-								modelo.addRow(new Object[]{bermuda.get(i).getTamanho(),bermuda.get(i).getPreco(),bermuda.get(i).getTipo(),bermuda.get(i).getCor(),bermuda.get(i).getDescricao(),bermuda.get(i).getCodigo()});
+								modelo.addRow(new Object[]{bermuda.get(i).getTamanho(),bermuda.get(i).getPreco(),bermuda.get(i).getTipo(),bermuda.get(i).getCor(),bermuda.get(i).getDescricao(),bermuda.get(i).getCodigo(),bermuda.get(i).getQuantidade()});
 								
 							}
 						
@@ -197,11 +204,15 @@ public class Vendas extends JFrame  {
 						
 						
 						//Listar  Bermudas /\
-					}else if (txtBuscar.getText().equals("1102")){
+				}else if (txtBuscar.getText().equals("1102")){
 						
 						
 						// CRIAÇÃO DO TABLE COM UMA ROLL PARA LISTAR AS CALCA						
 					//	table = new JTable();
+						scrollBerm.setVisible(false);
+						scrollCamisa.setVisible(false);
+						scrollOculos.setVisible(false);
+						
 						scrollCalca = new JScrollPane(table);
 						scrollCalca.setBounds(10, 176, 454, 243);
 						DefaultTableModel modelo = new DefaultTableModel();
@@ -212,13 +223,14 @@ public class Vendas extends JFrame  {
 						modelo.addColumn("cor");
 						modelo.addColumn("descrição");
 						modelo.addColumn("Cod.Produto");
+						modelo.addColumn("quantidade");
 						panel.add(scrollCalca);
 						ArrayList<Calca> calca = new ArrayList<Calca>();
 							
 						calca = fachada.listarCalca();	
-							for(int i = 0;i <calca.size();i++){
-							modelo.addRow(new Object[]{calca.get(i).getTamanho(),calca.get(i).getPreco(),calca.get(i).getTipo(),calca.get(i).getCor(),calca.get(i).getDescricao(),calca.get(i).getCodigo()});
-							}
+						for(int i = 0;i <calca.size();i++){
+							modelo.addRow(new Object[]{calca.get(i).getTamanho(),calca.get(i).getPreco(),calca.get(i).getTipo(),calca.get(i).getCor(),calca.get(i).getDescricao(),calca.get(i).getCodigo(),calca.get(i).getQuantidade()});
+						}
 						
 						
 						lblSelecioneOCodigo.setVisible(true);
@@ -235,6 +247,11 @@ public class Vendas extends JFrame  {
 						
 						// CRIAÇÃO DO TABLE COM UMA ROLL PARA LISTAR AS CAMISA						
 					//	table = new JTable();
+						
+						scrollBerm.setVisible(false);
+						scrollCalca.setVisible(false);
+						scrollOculos.setVisible(false);
+						
 						scrollCamisa = new JScrollPane(table);
 						scrollCamisa.setBounds(10, 176, 454, 243);
 						DefaultTableModel modelo = new DefaultTableModel();
@@ -245,12 +262,13 @@ public class Vendas extends JFrame  {
 						modelo.addColumn("tipo");
 						modelo.addColumn("descrição");
 						modelo.addColumn("Cod.Produto");
+						modelo.addColumn("quantidade");
 						panel.add(scrollCamisa);
 						ArrayList<Camisa> camisa = new ArrayList<Camisa>();
 							
 						camisa = fachada.listarCamisa();	
-							for(int i = 0;i<camisa.size(); i ++){
-							modelo.addRow(new Object[]{camisa.get(i).getTamanho(),camisa.get(i).getPreco(),camisa.get(i).getCorEstampa(),camisa.get(i).getTipo(),camisa.get(i).getDescricao(),camisa.get(i).getCodigo()});
+					   for(int i = 0;i<camisa.size(); i ++){
+							modelo.addRow(new Object[]{camisa.get(i).getTamanho(),camisa.get(i).getPreco(),camisa.get(i).getCorEstampa(),camisa.get(i).getTipo(),camisa.get(i).getDescricao(),camisa.get(i).getCodigo(),camisa.get(i).getQuantidade()});
 							}
 						
 						
@@ -268,6 +286,11 @@ public class Vendas extends JFrame  {
 						
 						// CRIAÇÃO DO TABLE COM UMA ROLL PARA LISTAR AS OCULOS						
 					//	table = new JTable();
+						
+						scrollBerm.setVisible(false);
+						scrollCamisa.setVisible(false);
+						scrollCalca.setVisible(false);
+						
 						scrollOculos = new JScrollPane(table);
 						scrollOculos.setBounds(10, 176, 454, 243);
 						DefaultTableModel modelo = new DefaultTableModel();
@@ -278,12 +301,13 @@ public class Vendas extends JFrame  {
 						modelo.addColumn("Descrição");
 						modelo.addColumn("Preço");
 						modelo.addColumn("Cod.Produto");
+						modelo.addColumn("quantidade");
 						panel.add(scrollOculos);
 						ArrayList<Oculos> oculos = new ArrayList<Oculos>();
 							
 						oculos = fachada.listarOculos();
 						for(int i = 0;i<oculos.size();i++){
-						modelo.addRow(new Object[]{oculos.get(i).getGenero(),oculos.get(i).getTipo(),oculos.get(i).getCor(),oculos.get(i).getDescricao(),oculos.get(i).getPreco(),oculos.get(i).getCodigo()});
+						modelo.addRow(new Object[]{oculos.get(i).getGenero(),oculos.get(i).getTipo(),oculos.get(i).getCor(),oculos.get(i).getDescricao(),oculos.get(i).getPreco(),oculos.get(i).getCodigo(),oculos.get(i).getQuantidade()});
 						}
 						
 						
@@ -297,15 +321,25 @@ public class Vendas extends JFrame  {
 						//Listar Oculos
 					}
 					
+				}else if(cbEscolha.getSelectedIndex()==2)  {
+					
+					dispose();
+					Detalhamento detalhamento = new Detalhamento(fachada,txtBuscar.getText(),funci,volta);
+					detalhamento.setVisible(true);
+					
 				}//FIM DA PROCURA DE PRODUTO POR CODIGO
 				
 				}catch(NullPointerException e1){
+					e1.getStackTrace();
 					JOptionPane.showMessageDialog(null, "null point");
-				}catch(IndexOutOfBoundsException e1){
+				}catch(IndexOutOfBoundsException e2){
 					JOptionPane.showMessageDialog(null, "Algo foi preenchido errado");
 				}			
+		
 			}
-		});// FIM ACTION LISTENER
+	
+			
+	});// FIM ACTION LISTENER
 		btnProcurar.setBounds(10, 563, 120, 36);
 		panel.add(btnProcurar);
 		

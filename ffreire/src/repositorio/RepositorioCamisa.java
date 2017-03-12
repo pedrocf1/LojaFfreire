@@ -19,11 +19,24 @@ public class RepositorioCamisa implements IRepositorioCamisa {
 	
 	@Override
 	public void cadastrar(Camisa camisa) {
-
+		//	this.camisa.add(camisa);
 	
-			
+		if(this.camisa.size() == 0){
 			this.camisa.add(camisa);
-	
+		}else if(this.camisa.size() != 0){
+			for(int i=0;i<=this.camisa.size();i++){
+				
+				if(i>0){
+					if(this.camisa.get(i-1).equals(camisa)){
+						this.camisa.get(i-1).aumentarQtd();
+					}
+				}else if(i == this.camisa.size()-1){
+					this.camisa.add(camisa);
+				}
+				
+				
+			}
+		}
 
 		
 	}// FIM CLASSE CADASTRAR
