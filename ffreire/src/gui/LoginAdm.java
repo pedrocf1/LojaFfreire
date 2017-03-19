@@ -64,8 +64,10 @@ public class LoginAdm extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 				Funcionario func = null;
-				AdcProduto produto = new AdcProduto(fachada,1,func);
-				produto.setVisible(true);
+				/*AdcProduto produto = new AdcProduto(fachada,1,func);
+				produto.setVisible(true);*/
+				RegistroUnificado ru = new RegistroUnificado(fachada);
+				ru.setVisible(true);
 			}
 		});
 		btnCadastrarProdutos.setBounds(182, 164, 141, 33);
